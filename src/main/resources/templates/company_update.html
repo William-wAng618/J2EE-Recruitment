@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" th:href="@{/bootstrap/css/bootstrap.min.css}">
+    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+    <script th:src="@{/bootstrap/js/jquery-1.11.1.min.js}"></script>
+    <script th:src="@{/bootstrap/js/bootstrap.min.js}"></script>
+</head>
+<body>
+<div class="panel panel-default">
+    <div class="panel-heading">修改公司</div>
+    <div class="panel-body">
+        <form th:action="@{/company/update}" method="post">
+            <input type="hidden" name="id" th:value="${company.id}"/>
+            <div class="form-group">
+                <label >公司名</label>
+                <input type="text" class="form-control" name="name" placeholder="请输入用户名"
+                       th:value="${company.name}" required>
+                <!--require为必填字段-->
+            </div>
+            <div class="form-group">
+                <label >内容</label>
+                <input type="text" class="form-control" name="content"
+                       th:value="${company.content}" placeholder="请输入内容" >
+            </div>
+            <div class="form-group">
+                <label >资金</label>
+                <input type="text" class="form-control" name="funds"
+                       th:value="${company.funds}" placeholder="请输入资金" >
+            </div>
+            <div class="form-group">
+                <label >电话</label>
+                <input type="text" class="form-control" name="tel"
+                       th:value="${company.tel}" placeholder="请输入电话" >
+            </div>
+            <div class="form-group">
+                <label >地址</label>
+                <input type="text" class="form-control" name="address"
+                       th:value="${company.address}" placeholder="请输入地址" >
+            </div>
+            <div class="form-group">
+                <label >Scale</label>
+                <input type="text" class="form-control" name="scale"
+                       th:value="${company.scale}" placeholder="请输入Scale" >
+            </div>
+            <div class="form-group">
+                <label >主营</label>
+                <input type="text" class="form-control" name="industry"
+                       th:value="${company.industry}" placeholder="请输入主营" >
+            </div>
+            <div class="form-group">
+                <label >描述</label>
+                <input type="text" class="form-control" name="description"
+                       th:value="${company.description}" placeholder="请输入描述" >
+            </div>
+            <div class="form-group">
+                <label >友情链接</label>
+                <input type="text" class="form-control" name="herf"
+                       th:value="${company.herf}" placeholder="请输入超链接" >
+            </div>
+            <div class="form-group">
+                <label >添加时间</label>
+                <input type="text" class="form-control" name="addDate"
+                       th:value="${company.addDate}" placeholder="请输入时间" >
+            </div>
+
+            <button type="submit" class="btn btn-default">提交</button>
+        </form>
+    </div>
+</div>
+</body>
+</html>

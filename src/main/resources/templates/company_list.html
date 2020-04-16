@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" th:href="@{/bootstrap/css/bootstrap.min.css}">
+    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+    <script th:src="@{/bootstrap/js/jquery-1.11.1.min.js}"></script>
+    <script th:src="@{/bootstrap/js/bootstrap.min.js}"></script>
+
+</head>
+<style type="text/css">
+    .font{
+        font-family: FontAwesome;
+        font-size: 20px;
+        text-align:center ;
+    }
+    .contentwidth{
+        text-align: center;
+        width: 20%;
+    }
+    .td_title{
+        font-family: FontAwesome;
+        font-size: 15px;
+        text-align: center;
+    }
+    .tdwidth{
+        font-family: FontAwesome;
+        font-size: 15px;
+        text-align: center;
+        width: 10%;
+    }
+    .tdwidth2{
+        font-family: FontAwesome;
+        font-size: 15px;
+        text-align: center;
+        width: 14%;
+    }
+    .type{
+        width: 4%;
+        font-family: FontAwesome;
+        font-size: 15px;
+        text-align: center;
+    }
+    .address{
+        width: 8%;
+        font-family: FontAwesome;
+        font-size: 15px;
+        text-align: center;
+    }
+</style>
+<body>
+<div class="panel panel-success">
+    <div class="panel-heading">公司列表</div>
+    <div class="panel-body">
+        <form class="navbar-form navbar-left" th:action="@{/company/slist}" method="post">
+            <div class="form-group">
+                <label>查询条件:</label>
+                <input type="text" name="name" class="form-control" placeholder="请输入公司名"/>
+                <button class="btn btn-info" >查询</button>
+                <a class="btn btn-info" th:href="@{/company/toAdd}" role="button">新增</a>
+            </div>
+        </form>
+
+    </div>
+</div>
+
+<!--<span class="label label-danger">用户列表</span>-->
+<!--<a class="btn btn-info" th:href="@{/user/toAdd}" role="button">新增</a>-->
+<table class="table table-bordered table-striped">
+    <tr>
+        <td class="td_title">序号</td>
+        <td class="td_title">公司名</td>
+        <td class="contentwidth">内容</td>
+        <td class="td_title">资金</td>
+        <td class="td_title">电话</td>
+        <td class="address">地址</td>
+        <td class="type">scale</td>
+        <td class="type">类型</td>
+        <td class="td_title">简介</td>
+        <td class="tdwidth">友情连接</td>
+        <td class="td_title">日期</td>
+        <td class="tdwidth2">操作</td>
+    </tr>
+    <tr th:each="item,state:${list}" class="font">
+        <td th:text="${state.count}"></td>
+        <td th:text="${item.name}"></td>
+        <td class="contentwidth" th:text="${item.content}"></td>
+        <td th:text="${item.funds}"></td>
+        <td th:text="${item.tel}"></td>
+        <td th:text="${item.address}"></td>
+        <td th:text="${item.scale}"></td>
+        <td th:text="${item.industry}"></td>
+        <td th:text="${item.description}"></td>
+        <td class="tdwidth" th:text="${item.herf}"></td>
+        <td th:text="${item.addDate}"></td>
+        <td>
+            <a class="btn btn-info" th:href="@{/company/toUpdate?id=__${item.id}__}" role="button">修改</a>
+            <a class="btn btn-info" th:href="@{/company/del?id=__${item.id}__}" role="button">删除</a>
+        </td>
+    </tr>
+</table>
+<!--<ul  class="list-group">-->
+<!--<li class="list-group-item" th:each="item,state:${list}">-->
+<!--<span th:text="${state.count}"></span>-->
+<!--<td th:text="${item.username}"></td>-->
+<!--</li>-->
+<!--</ul>-->
+</body>
+</html>
